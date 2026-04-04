@@ -1,14 +1,7 @@
 import { formatTimeAgo } from '../../helpers/formatTimeAgo';
 import { Image } from '../Image/Image';
+import type { NewsItem } from '../NewsItem/NewsItem';
 import styles from './styles.module.css';
-
-interface NewsItem {
-  image: string;
-  title: string;
-  extra: string;
-  published: string;
-  author: string;
-}
 
 interface NewsBannerProps {
   item: NewsItem;

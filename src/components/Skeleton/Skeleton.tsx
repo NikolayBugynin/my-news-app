@@ -1,6 +1,6 @@
 import styles from './styles.module.css';
 
-interface SkeletonrProps {
+export interface SkeletonrProps {
   count?: number;
   type?: 'banner' | 'item';
 }
