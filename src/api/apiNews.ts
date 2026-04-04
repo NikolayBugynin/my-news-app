@@ -4,7 +4,7 @@ const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
 
 const BASE_URL = import.meta.env.VITE_NEWS_BASE_API_URL;
 
-interface GetNewsParams {
+export interface GetNewsParams {
   page_number: number;
   page_size: number;
   category?: string | null;
