@@ -3,7 +3,7 @@ import styles from './styles.module.css';
 export interface SkeletonrProps {
   count?: number;
   type?: 'banner' | 'item';
-  direction: string;
+  direction?: 'column' | 'row';
 }
 
 export const Skeleton = ({
