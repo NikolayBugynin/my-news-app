@@ -1,8 +1,14 @@
 import { useFetchCategoties } from '../../helpers/hooks/useFetchCategoties';
 import { Categories } from '../Categories/Categories';
-import type { Filters } from '../NewsByFilters/NewsByFilters';
 import { Search } from '../Search/Search';
 import styles from './styles.module.css';
+
+export interface Filters {
+  page_number: number;
+  page_size: number;
+  category: null;
+  keywords: string;
+}
 
 interface NewsFilters {
   filters: Filters;
@@ -15,7 +21,6 @@ export const NewsFilters = ({ filters, changeFilter }: NewsFilters) => {
 
   return (
     <div className={styles.filters}>
-      {' '}
       {categories ? (
         <Categories
           categories={categories}
