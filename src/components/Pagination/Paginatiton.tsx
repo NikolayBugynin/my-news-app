@@ -1,6 +1,6 @@
 import styles from './styles.module.css';
 
-interface PaginatitonProps {
+export interface PaginationProps {
   totalPages: number;
   handleNextPage: () => void;
   handlePreviousPage: () => void;
@@ -8,13 +8,13 @@ interface PaginatitonProps {
   currentPage: number;
 }
 
-export const Paginatiton = ({
+export const Pagination = ({
   totalPages,
   handleNextPage,
   handlePreviousPage,
   handlePageClick,
   currentPage,
-}: PaginatitonProps) => {
+}: PaginationProps) => {
   return (
     <div className={styles.pagination}>
       <button
