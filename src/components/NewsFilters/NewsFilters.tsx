@@ -1,6 +1,7 @@
 import { useFetchCategoties } from '../../helpers/hooks/useFetchCategoties';
 import { Categories } from '../Categories/Categories';
 import { Search } from '../Search/Search';
+import { Slider } from '../Slider/Slider';
 import styles from './styles.module.css';
 
 export interface Filters {
@@ -22,11 +23,15 @@ export const NewsFilters = ({ filters, changeFilter }: NewsFilters) => {
   return (
     <div className={styles.filters}>
       {categories ? (
-        <Categories
-          categories={categories}
-          selectedCategory={filters.category}
-          setSelectedCategory={(category) => changeFilter('category', category)}
-        />
+        <Slider >
+          <Categories
+            categories={categories}
+            selectedCategory={filters.category}
+            setSelectedCategory={(category) =>
+              changeFilter('category', category)
+            }
+          />
+        </Slider>
       ) : null}
       <Search
         keywords={filters.keywords}
