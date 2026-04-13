@@ -1,4 +1,8 @@
 import { withSkeleton } from '../../helpers/hocs/withSkeleton';
-import { NewsList } from '../NewsList/NewsList';
+import { NewsList, type NewsListProps } from '../NewsList/NewsList';
 
-export const NewsListWithSkeleton = withSkeleton(NewsList, 'item', 10);
+export const NewsListWithSkeleton = withSkeleton<NewsListProps>(
+  NewsList,
+  'item',
+  10,
+);

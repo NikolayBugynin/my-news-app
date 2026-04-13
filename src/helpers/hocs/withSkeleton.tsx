@@ -1,17 +1,15 @@
-import type { ComponentType } from 'react';
 import { Skeleton } from '../../components/Skeleton/Skeleton';
-
-type SkeletonType = 'banner' | 'item';
+import type { DirectionType, SkeletonType } from '../../interfaces';
 
 interface withSkeletonProps {
   isLoading?: boolean;
 }
 
 export const withSkeleton = <P extends object>(
-  Component: ComponentType<P>,
-  type: SkeletonType,
-  count: number,
-  direction?: 'column' | 'row',
+  Component: React.ComponentType<P>,
+  type?: SkeletonType,
+  count?: number,
+  direction?: DirectionType,
 ) => {
   return function WithSkeleton(props: P & withSkeletonProps) {
     const { isLoading, ...restProps } = props;

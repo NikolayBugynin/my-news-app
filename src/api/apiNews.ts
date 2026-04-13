@@ -1,24 +1,24 @@
 import axios from 'axios';
+import type {
+  CategoriesApiResponse,
+  NewsApiResponse,
+  ParamsType,
+} from '../interfaces';
 
 const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
-
 const BASE_URL = import.meta.env.VITE_NEWS_BASE_API_URL;
 
-export interface GetNewsParams {
-  page_number: number;
-  page_size: number;
-  category?: string | null;
-  keywords?: string;
-}
-
-export const getNews = async ({
-  page_number = 1,
-  page_size = 10,
-  category,
-  keywords,
-}: GetNewsParams) => {
+export const getNews = async (
+  params?: ParamsType,
+): Promise<NewsApiResponse> => {
   try {
-    const response = await axios.get(`${BASE_URL}search`, {
+    const {
+      page_number = 1,
+      page_size = 10,
+      category,
+      keywords,
+    } = params || {};
+    const response = await axios.get<NewsApiResponse>(`${BASE_URL}search`, {
       params: {
         apiKey: API_KEY,
         page_number,
@@ -30,10 +30,11 @@ export const getNews = async ({
     return response.data;
   } catch (error) {
     console.error(error);
+    return { news: [], page: 1, status: 'error' };
   }
 };
 
-export const getLatestnews = async () => {
+export const getLatestnews = async (): Promise<NewsApiResponse> => {
   try {
     const response = await axios.get(`${BASE_URL}latest-news`, {
       params: {
@@ -43,18 +44,23 @@ export const getLatestnews = async () => {
     return response.data;
   } catch (error) {
     console.error(error);
+    return { news: [], page: 1, status: 'error' };
   }
 };
 
-export const getCategories = async () => {
+export const getCategories = async (): Promise<CategoriesApiResponse> => {
   try {
-    const response = await axios.get(`${BASE_URL}available/categories`, {
-      params: {
-        apiKey: API_KEY,
+    const response = await axios.get<CategoriesApiResponse>(
+      `${BASE_URL}available/categories`,
+      {
+        params: {
+          apiKey: API_KEY,
+        },
       },
-    });
+    );
     return response.data;
   } catch (error) {
     console.error(error);
+    return { categories: [], description: '', status: 'error' };
   }
 };
