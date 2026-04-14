@@ -2,7 +2,7 @@ import styles from './styles.module.css';
 
 interface SearchProps {
   keywords: string;
-  setKeywords: React.Dispatch<React.SetStateAction<string>>;
+  setKeywords: (keywords: string) => void;
 }
 
 export const Search = ({ keywords, setKeywords }: SearchProps) => {

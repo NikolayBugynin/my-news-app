@@ -1,11 +1,10 @@
 import { useState } from 'react';
+import type { IFilters } from '../../interfaces';
 
-export const useFilters = <T extends Record<string, unknown>>(
-  initialFilters: T,
-) => {
-  const [filters, setFilters] = useState(initialFilters);
+export const useFilters = (initialFilters: IFilters) => {
+  const [filters, setFilters] = useState<IFilters>(initialFilters);
 
-  const changeFilter = <K extends string, V>(key: K, value: V) => {
+  const changeFilter = (key: string, value: string | number | null) => {
     setFilters((prev) => {
       return { ...prev, [key]: value };
     });

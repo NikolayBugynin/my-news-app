@@ -1,17 +1,9 @@
 import { formatTimeAgo } from '../../helpers/formatTimeAgo';
+import type { INews } from '../../interfaces';
 import styles from './styles.module.css';
 
-export interface NewsItem {
-  image: string;
-  title: string;
-  extra: string;
-  published: string;
-  author: string;
-  id: number;
-}
-
 interface NewsItemProps {
-  item: NewsItem;
+  item: INews;
 }
 
 export const NewsItem = ({ item }: NewsItemProps) => {

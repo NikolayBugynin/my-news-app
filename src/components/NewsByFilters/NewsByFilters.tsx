@@ -1,7 +1,9 @@
+import { getNews } from '../../api/apiNews';
 import { PAGES_SIZE, TOTAL_PAGES } from '../../constants/constants';
 import { useDebounce } from '../../helpers/hooks/useDebounce';
-import { useFetchNews } from '../../helpers/hooks/useFetchNews';
+import { useFetch } from '../../helpers/hooks/useFetch';
 import { useFilters } from '../../helpers/hooks/useFilters';
+import type { NewsApiResponse, ParamsType } from '../../interfaces';
 import { NewsFilters } from '../NewsFilters/NewsFilters';
 import { NewsListWithSkeleton } from '../NewsListWithSkeleton/NewsListWithSkeleton';
 import { PaginationWrapper } from '../PaginationWrapper/PaginationWrapper';
@@ -17,7 +19,7 @@ export const NewsByFilters = () => {
 
   const debouncedKeyWords = useDebounce(filters.keywords, 1500);
 
-  const { news, isLoading } = useFetchNews({
+  const { data, isLoading } = useFetch<NewsApiResponse, ParamsType>(getNews, {
     ...filters,
     keywords: debouncedKeyWords,
   });
@@ -50,8 +52,8 @@ export const NewsByFilters = () => {
         totalPages={TOTAL_PAGES}
         currentPage={filters.page_number}
       >
-        <NewsListWithSkeleton news={news} isLoading={isLoading} />
+        <NewsListWithSkeleton news={data?.news} isLoading={isLoading} />
       </PaginationWrapper>
     </section>
-  );
+  ); 
 };

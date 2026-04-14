@@ -11,7 +11,7 @@ interface SliderProps {
 }
 
 export const Slider = ({ children, step = 150 }: SliderProps) => {
-  const sliderRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement | null>(null);
 
   const scrollLeft = () => {
     if (sliderRef.current) sliderRef.current.scrollLeft -= step;
