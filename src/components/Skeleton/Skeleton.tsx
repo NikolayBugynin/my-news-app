@@ -1,9 +1,10 @@
+import type { DirectionType, SkeletonType } from '../../interfaces';
 import styles from './styles.module.css';
 
 export interface SkeletonrProps {
   count?: number;
-  type?: 'banner' | 'item';
-  direction?: 'column' | 'row';
+  type?: SkeletonType;
+  direction?: DirectionType;
 }
 
 export const Skeleton = ({

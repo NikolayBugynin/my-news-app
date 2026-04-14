@@ -1,12 +1,12 @@
+import type { INews } from '../../interfaces';
 import { NewsBanner } from '../NewsBanner/NewsBanner';
-import type { NewsItem } from '../NewsItem/NewsItem';
 import styles from './styles.module.css';
 
-interface BannersList {
-  banners: NewsItem[];
+export interface BannersListProps {
+  banners?: INews[] | null;
 }
 
-export const BannersList = ({ banners }: BannersList) => {
+export const BannersList = ({ banners }: BannersListProps) => {
   return (
     <ul className={styles.banners}>
       {banners?.map((banner) => {
