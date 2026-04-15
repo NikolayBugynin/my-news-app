@@ -55,5 +55,5 @@ export const NewsByFilters = () => {
         <NewsListWithSkeleton news={data?.news} isLoading={isLoading} />
       </PaginationWrapper>
     </section>
-  ); 
+  );
 };
