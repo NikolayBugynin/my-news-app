@@ -8,9 +8,10 @@ import styles from './styles.module.css';
 interface SliderProps {
   children: ReactElement<ComponentPropsWithRef<'div'>>;
   step?: number;
+  isDark: boolean;
 }
 
-export const Slider = ({ children, step = 150 }: SliderProps) => {
+export const Slider = ({ children, isDark, step = 150 }: SliderProps) => {
   const sliderRef = useRef<HTMLDivElement | null>(null);
 
   const scrollLeft = () => {
@@ -22,7 +23,7 @@ export const Slider = ({ children, step = 150 }: SliderProps) => {
   };
 
   return (
-    <div className={styles.slider}>
+    <div className={`${styles.slider} ${isDark ? styles.dark : styles.light}`}>
       <button onClick={scrollLeft} className={styles.arrow}>
         {'<'}
       </button>
