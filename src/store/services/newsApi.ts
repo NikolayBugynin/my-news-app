@@ -22,15 +22,30 @@ export const newsApi = createApi({
           category,
           keywords,
         } = params || {};
+
+        const queryParams: {
+          apiKey: string;
+          page_number: number;
+          page_size: number;
+          category?: string;
+          keywords?: string;
+        } = {
+          apiKey: API_KEY,
+          page_number,
+          page_size,
+        };
+
+        if (category) {
+          queryParams.category = category;
+        }
+
+        if (keywords) {
+          queryParams.keywords = keywords;
+        }
+
         return {
           url: 'search',
-          params: {
-            apiKey: API_KEY,
-            page_number,
-            page_size,
-            category,
-            keywords,
-          },
+          params: queryParams,
         };
       },
       async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
